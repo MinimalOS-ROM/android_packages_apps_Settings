@@ -101,6 +101,9 @@ public class HomepagePreference extends Preference {
         border.setStroke(2, 0xFF333333);
         holder.itemView.setBackground(border);
         holder.itemView.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                v.requestRectangleOnScreen(new android.graphics.Rect(0, 0, v.getWidth(), v.getHeight()), false);
+            }
             border.setColor(hasFocus ? android.graphics.Color.WHITE : android.graphics.Color.BLACK);
             border.setStroke(2, hasFocus ? android.graphics.Color.WHITE : 0xFF333333);
             if (titleView instanceof android.widget.TextView) {
