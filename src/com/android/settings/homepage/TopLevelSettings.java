@@ -237,7 +237,17 @@ public class TopLevelSettings extends DashboardFragment implements
     }
 
     @Override
+    public RecyclerView.LayoutManager onCreateLayoutManager() {
+        return new androidx.recyclerview.widget.GridLayoutManager(getContext(), 3);
+    }
+
+    @Override
     protected RecyclerView.Adapter onCreateAdapter(PreferenceScreen preferenceScreen) {
+        if (preferenceScreen != null) {
+            for (int i = 0; i < preferenceScreen.getPreferenceCount(); i++) {
+                preferenceScreen.getPreference(i).setSummary(null);
+            }
+        }
         if (!mIsEmbeddingActivityEnabled || !(getActivity() instanceof SettingsHomepageActivity)) {
             return super.onCreateAdapter(preferenceScreen);
         }

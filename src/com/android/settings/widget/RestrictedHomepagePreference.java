@@ -44,4 +44,10 @@ public class RestrictedHomepagePreference extends RestrictedTopLevelPreference {
         super(context);
         setLayoutResource(R.layout.homepage_preference);
     }
+
+    @Override
+    public void onBindViewHolder(androidx.preference.PreferenceViewHolder holder) {
+        super.onBindViewHolder(holder);
+        HomepagePreference.styleTile(holder);
+    }
 }
